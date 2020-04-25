@@ -26,39 +26,39 @@ export const routes = [
         path: '/',
         name: '',
         component: ListMembers,
-        beforeEnter: guardMyroute,
+        // beforeEnter: guardMyroute,
         meta: { title: 'Home' }
     },
-    {
-        path: '/login',
-        name: 'a',
-        component: Login,
-        meta: { title: 'Login' }
-    },
+    // {
+    //     path: '/login',
+    //     name: 'a',
+    //     component: Login,
+    //     meta: { title: 'Login' }
+    // },
     {
         path: '/listmember',
         name: '',
         component: ListMembers,
-        beforeEnter: guardMyroute,
+        // beforeEnter: guardMyroute,
         meta: { title: 'List Member' }
     },
     {
         path: '/searchmember',
         name: '',
-        beforeEnter: guardMyroute,
+        // beforeEnter: guardMyroute,
         component: SearchMember
     },
     {
         path: '/cartpreview',
         name: '',
-        beforeEnter: guardMyroute,
+        // beforeEnter: guardMyroute,
         component: CartPreview,
         meta: { title: 'List Book' }
     },
     {
         path: '/cartpreview/detail/:id',
         name: '',
-        beforeEnter: guardMyroute,
+        // beforeEnter: guardMyroute,
         component: BookDetail,
         meta: { title: 'Book Detail' }
     },
@@ -66,34 +66,34 @@ export const routes = [
         path: '/cartlist',
         name: '',
         component: CartList,
-        beforeEnter: guardMyroute,
+        // beforeEnter: guardMyroute,
         meta: { title: 'Cart List' }
     },
     {
         path: '/notfound',
         name: '',
         component: NotFound,
-        beforeEnter: guardMyroute,
+        // beforeEnter: guardMyroute,
         meta: { title: 'Not Found' }
     },
     {
         path: '/autocomplete',
         name: '',
         component: AutoComplete,
-        beforeEnter: guardMyroute,
+        // beforeEnter: guardMyroute,
         meta: { title: 'Auto Complete' }
     },
     {
         path: '/slots',
         name: '',
         component: ParentComponent,
-        beforeEnter: guardMyroute,
+        // beforeEnter: guardMyroute,
         meta: { title: 'Auto Complete' }
     },
     {
         path: '*',
         name: '',
-        beforeEnter: guardMyroute,
+        // beforeEnter: guardMyroute,
         component: NotFound,
         meta: { title: 'Not Found' }
     }
