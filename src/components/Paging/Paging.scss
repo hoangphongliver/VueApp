@@ -1,0 +1,82 @@
+.paging {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    &__paging {
+        ul {
+            display: flex;
+            li {
+                list-style: none;
+                padding: 9px 16px;
+                background: seagreen;
+                margin-right: 10px;
+                border: 1px solid #31475e;
+                color: white;
+                cursor: pointer;
+                font-weight: bold;
+                font-size: 15px;
+                &:hover {
+                    background: white;
+                    color: seagreen;
+                    padding: 8px 15px;
+                    border: 2px solid seagreen;
+                }
+            }
+            button {
+                border: none;
+                background: none;
+                padding: 0;
+                &:disabled {
+                    li {
+                        background: seagreen;
+                        color: darkgray;
+                        &:hover {
+                            color: darkgray;
+                        }
+                    }
+                }
+            }
+
+            .list-page {
+                li {
+                    border-radius: 50%;
+                }
+            }
+            .page {
+                display: flex;
+                button {
+                    padding: 0;
+                    &:disabled {
+                        li {
+                            background: #31475e;
+                            border: 2px solid #31475e;
+                            &:hover {
+                                color: darkgray;
+                            }
+                        }
+                    }
+                }
+                .active {
+                    background: #31475e;
+                    padding: 8px 15px;
+                    border: 2px solid seagreen;
+                    &:hover {
+                        background: #31475e;
+                        color: white;
+                        border: 2px solid #31475e;
+                    }
+                }
+            }
+        }
+    }
+    &__item-page {
+        margin-left: 100px;
+        select {
+            height: 35px;
+            width: 100px;
+            padding-left: 10px;
+            border-radius: 3px;
+            border-color: seagreen;
+        }
+    }
+}

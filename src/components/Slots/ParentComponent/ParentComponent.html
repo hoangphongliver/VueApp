@@ -1,0 +1,8 @@
+<section class="parent-component">
+  <h1>{{ text | toLowerCase }}</h1>
+  <ChildComponent>
+    <p slot="header" slot-scope="row">{{row.text}}</p>
+    <h4 slot="main">Content</h4>
+    <h1 slot="footer">FT</h1>
+  </ChildComponent>
+</section>

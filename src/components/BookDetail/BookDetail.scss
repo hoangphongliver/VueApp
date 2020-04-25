@@ -1,0 +1,104 @@
+.book-detail {
+  width: 90%;
+  margin: 0 auto;
+  &__title {
+    color: seagreen;
+    display: flex;
+    align-items: center;
+    padding-bottom: 5px;
+    border-bottom: 1px solid seagreen;
+    .back {
+      padding: 7px 15px 7px 10px;
+      border-radius: 3px;
+      background: seagreen;
+      margin-right: 20px;
+      i {
+        color: white !important;
+      }
+      &:hover {
+        padding: 6px 14px 6px 9px;
+        border: 1px solid seagreen;
+        background: white;
+        cursor: pointer;
+        i {
+          color: seagreen !important;
+        }
+      }
+    }
+  }
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 30px;
+    &__left {
+      width: 75%;
+      .top {
+        display: flex;
+        margin-bottom: 50px;
+        .image {
+          img {
+            width: 100%;
+          }
+        }
+        .info {
+          margin-left: 20px;
+          font-weight: bold;
+          p:last-child {
+            margin-top: 50px;
+            font-weight: normal;
+            font-size: 16px;
+          }
+        }
+      }
+      .content {
+        line-height: 35px;
+        font-size: 16px;
+      }
+    }
+    &__right {
+      width: 23%;
+      border-radius: 5px;
+      padding: 20px;
+      height: 320px;
+      box-shadow: 2px 2px 5px 3px #888888;
+      .title {
+        font-weight: bold;
+        padding-bottom: 10px;
+        border-bottom: 1px solid seagreen;
+      }
+      .content {
+        padding-bottom: 20px;
+        border-bottom: 1px solid seagreen;
+        .block {
+          display: flex;
+          padding-top: 20px;
+          .name {
+            width: 60%;
+          }
+          .price {
+            color: red;
+          }
+        }
+      }
+      .buy {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        button {
+          background: seagreen;
+          color: white;
+          font-weight: bold;
+          border: 1px solid seagreen;
+          padding: 10px 20px;
+          cursor: pointer;
+          &:hover {
+            padding: 9px 19px;
+            border: 2px solid seagreen;
+            background: white;
+            color: seagreen;
+          }
+        }
+      }
+    }
+  }
+}

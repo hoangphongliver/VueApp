@@ -1,0 +1,137 @@
+@mixin scrollbar {
+    &::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #c8dff5;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: seagreen;
+    }
+
+    &::-webkit-scrollbar,
+    &::-webkit-scrollbar-track,
+    &::-webkit-scrollbar-thumb {
+        visibility: visible;
+    }
+
+    &:hover {
+        &::-webkit-scrollbar,
+        &::-webkit-scrollbar-track,
+        &::-webkit-scrollbar-thumb {
+            visibility: visible;
+        }
+    }
+}
+.auto-complete{
+    width: 100%;
+    position: relative;
+}
+input{
+    width: 100%;
+    height: 50px;
+    border-radius: 4px;
+    border: 1px solid seagreen;
+    padding-left: 10px;
+}
+.view-cart {
+    width: 100%;
+    height: auto;
+    box-shadow: 0px 0px 10px 4px #888888;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 1000;
+    background: wheat;
+    &__close {
+        position: absolute;
+        right: -40px;
+        top: 40%;
+        i {
+            cursor: pointer;
+            color: gray !important;
+            font-size: 50px !important;
+        }
+    }
+    .cart-view {
+        max-height: 600px;
+        overflow: auto;
+        @include scrollbar();
+        &::-webkit-scrollbar {
+            width: 5px;
+            height: 8px;
+        }
+    }
+    &__view-book {
+        display: flex;
+        padding: 10px 20px;
+        border-bottom: 1px solid seagreen;
+        &__image {
+            width: 15%;
+            img {
+                width: 42px;
+                height: 61px;
+            }
+        }
+        &__info {
+            margin-left: 10px;
+            width: 75%;
+            span {
+                display: block;
+                margin: 5px 10px;
+            }
+            span:first-child {
+                font-weight: bold;
+            }
+        }
+        &__del {
+            i {
+                color: seagreen !important;
+                font-size: 26px !important;
+                cursor: pointer;
+            }
+        }
+        &:hover{
+            background: lightyellow;
+        }
+    }
+    &__price {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px;
+        &__total {
+            font-weight: bold;
+        }
+        &__view {
+            button {
+                padding: 7px 16px;
+                cursor: pointer;
+                background: seagreen;
+                color: white;
+                font-weight: bold;
+                border: 1px solid seagreen;
+                &:hover {
+                    padding: 6px 15px;
+                    border: 2px solid seagreen;
+                    color: seagreen;
+                    background: white;
+                }
+                &:disabled {
+                    background: grey;
+                    border-color: grey;
+                    &:hover {
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.active{
+    background: seagreen !important;
+    color: white !important;
+}

@@ -1,0 +1,37 @@
+.list-members {
+  margin: 0 auto;
+  display: flex;
+  width: 100%;
+  transition: .4s;
+  &__table {
+    width: 100%;
+  }
+  .md-table {
+    .md-table-head {
+      text-align: center !important;
+    }
+    button {
+      background: none;
+      border: none;
+      .md-icon {
+        margin-right: 10px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.set-width {
+  transition: .4s;
+  .list-members__table {
+    width: 76%;
+    transition: .4s;
+  }
+  .add-member {
+    width: 22%;
+    transition: .4s;
+    margin-right: 2%;
+    overflow: hidden;
+    opacity: 1;
+  }
+}

@@ -1,0 +1,40 @@
+<section class="navbar" :class="[hideMenu ? 'hide-menu' : '']">
+  <div class="navbar__bgr" @click="closeMenu()"></div>
+  <div class="navbar__menu">
+    <div class="fix">
+      <div class="icon" @click="closeMenu()">
+        <md-icon v-if="!hideMenu" class="fa fa-times"></md-icon>
+      </div>
+      <ul>
+        <li :class="[currentModule==='listmember' ? 'active' : '']"
+          @click="closeMenu(), saveCurrentModule('listmember')">
+          Members
+        </li>
+        <li :class="[currentModule==='searchmember' ? 'active' : '']"
+          @click="closeMenu() , saveCurrentModule('searchmember')">
+          Search Member
+        </li>
+        <li :class="[currentModule==='notfound' ? 'active' : '']"
+          @click="closeMenu() , saveCurrentModule('notfound')">
+          Not Found
+        </li>
+        <li :class="[currentModule==='cartpreview' ? 'active' : '']"
+          @click="closeMenu() , saveCurrentModule('cartpreview')">
+          Cart Preview
+        </li>
+        <li :class="[currentModule==='autocomplete' ? 'active' : '']"
+          @click="closeMenu() , saveCurrentModule('autocomplete')">
+          Auto Complete
+        </li>
+        <li :class="[currentModule==='slots' ? 'active' : '']"
+          @click="closeMenu() , saveCurrentModule('slots')">
+          Slots
+        </li>
+      </ul>
+      <div class="logout">
+        <button @click="logout">Logout</button>
+      </div>
+    </div>
+  </div>
+  
+</section>

@@ -1,0 +1,36 @@
+<section class="add-member">
+  <div>
+    <md-field>
+      <label>Name:</label>
+      <md-input v-model="userModel.name"></md-input>
+    </md-field>
+
+    <md-field>
+      <label>Age:</label>
+      <md-input v-model="userModel.age"></md-input>
+    </md-field>
+
+    <md-field>
+      <label>Email:</label>
+      <md-input v-model="userModel.email"></md-input>
+    </md-field>
+
+    <md-field>
+      <label>Gender:</label>
+      <md-select v-model="userModel.gender">
+        <md-option v-for="(gen,i) in gender" :key="i" v-bind:value="gen">{{gen}}</md-option>
+      </md-select>
+    </md-field>
+
+    <md-field>
+      <label>Description:</label>
+      <md-textarea v-model="userModel.desc"></md-textarea>
+    </md-field>
+  </div>
+
+  <div class="submit">
+    <md-button class="md-raised md-primary" v-on:click="submit(userModel)">
+      {{ userModel.id ? 'Edit Member' : 'Add Member' }}
+    </md-button>
+  </div>
+</section>

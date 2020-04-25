@@ -1,0 +1,51 @@
+<section class="book-detail">
+  <div class="book-detail__title">
+    <div class="back" @click="backToList()">
+      <md-icon class="fa fa-backward"></md-icon>
+    </div>
+    <h2>BOOK DETAIl</h2>
+  </div>
+  <div class="book-detail__content" v-if="bookDetail">
+    <div class="book-detail__content__left">
+      <div class="top">
+        <div class="image">
+          <img :src="bookDetail.image" alt="">
+        </div>
+        <div class="info">
+          <h2>{{bookDetail.name}}</h2>
+          <p>Tác giả: {{bookDetail.authur}}</p>
+          <p>Nhà xuất bản: Nxb Trẻ</p>
+          <p>{{bookDetail.desc}}</p>
+        </div>
+      </div>
+      <div class="content">
+        {{bookDetail.content}}
+      </div>
+    </div>
+    <div class="book-detail__content__right">
+      <div class="title">Thông tin thanh toán
+      </div>
+      <div class="content">
+        <div class="block">
+          <div class="name">Giá bìa:</div>
+          <div class="price">{{shared.formatMoney(bookDetail.price)}} VNĐ</div>
+        </div>
+        <div class="block">
+          <div class="name">Giá bán:</div>
+          <div class="price">{{shared.formatMoney(bookDetail.price)}} VNĐ</div>
+        </div>
+        <div class="block">
+          <div class="name">Tiết kiệm:</div>
+          <div class="price">{{shared.formatMoney(bookDetail.price)}} VNĐ</div>
+        </div>
+        <div class="block">
+          <div class="name">Còn Lại:</div>
+          <div style="color: seagreen;" class="price">10</div>
+        </div>
+      </div>
+      <div class="buy">
+        <button @click="addToCart(bookDetail)">BUY NOW</button>
+      </div>
+    </div>
+  </div>
+</section>

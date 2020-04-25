@@ -1,0 +1,130 @@
+@mixin scrollbar {
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #c8dff5;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: seagreen;
+  }
+
+  &::-webkit-scrollbar,
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-thumb {
+    visibility: hidden;
+  }
+
+  &:hover {
+    &::-webkit-scrollbar,
+    &::-webkit-scrollbar-track,
+    &::-webkit-scrollbar-thumb {
+      visibility: visible;
+    }
+  }
+}
+.view-cart {
+  width: 420px;
+  height: auto;
+  background: floralwhite;
+  box-shadow: 1px 3px 10px 4px #888888;
+  border-radius: 5px;
+  position: relative;
+  &__close {
+    position: absolute;
+    right: -40px;
+    top: 40%;
+    i {
+      cursor: pointer;
+      color: gray !important;
+      font-size: 50px !important;
+    }
+  }
+  &::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    transform: rotate(60deg);
+    background: floralwhite;
+    position: absolute;
+    right: 10px;
+    top: -5px;
+  }
+  .cart-view {
+    padding: 15px;
+    padding-right: 15px;
+    max-height: 600px;
+    overflow: auto;
+    @include scrollbar();
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 8px;
+    }
+  }
+  &__view-book {
+    display: flex;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid seagreen;
+    &__image {
+      width: 15%;
+      img {
+        width: 42px;
+        height: 61px;
+      }
+    }
+    &__info {
+      margin-left: 10px;
+      width: 75%;
+      span {
+        display: block;
+        margin: 5px 10px;
+      }
+      span:first-child {
+        font-weight: bold;
+      }
+    }
+    &__del {
+      i {
+        color: seagreen !important;
+        font-size: 26px !important;
+        cursor: pointer;
+      }
+    }
+  }
+  &__price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    &__total {
+      font-weight: bold;
+    }
+    &__view {
+      button {
+        padding: 7px 16px;
+        cursor: pointer;
+        background: seagreen;
+        color: white;
+        font-weight: bold;
+        border: 1px solid seagreen;
+        &:hover {
+          padding: 6px 15px;
+          border: 2px solid seagreen;
+          color: seagreen;
+          background: white;
+        }
+        &:disabled {
+          background: grey;
+          border-color: grey;
+          &:hover {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}

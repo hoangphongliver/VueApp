@@ -1,0 +1,10 @@
+.add-member {
+  width: 0%;
+  overflow: hidden;
+  transition: .4s;
+  opacity: 0;
+  .submit{
+      display: flex;
+      justify-content: center;
+  }
+}

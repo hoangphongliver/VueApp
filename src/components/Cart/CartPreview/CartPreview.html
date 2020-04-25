@@ -1,0 +1,78 @@
+<section class="cart-preview">
+  <md-dialog-confirm :md-active.sync="active" :md-title="title" md-confirm-text="Agree" md-cancel-text="No"
+    @md-cancel="onCancel" @md-confirm="onConfirm" />
+  <div class="cart-preview__title">
+    <h2>Product List</h2>
+    <div class="actions">
+      <div class="add-book search" @click="showOption = !showOption">
+        <md-icon class="fa fa-search"></md-icon>
+      </div>
+      <div class="add-book" @click="arrFormatMoney = [] , showDialog = true">
+        <md-icon class="fa fa-plus"></md-icon>
+      </div>
+    </div>
+    <md-dialog :md-active.sync="showDialog" @md-clicked-outside="clickOutsite()">
+      <md-dialog-title>{{ !book.id ? 'Add Book' : 'Edit Book'}}</md-dialog-title>
+
+      <form action="">
+        <input type="text" placeholder="Book Name" v-model="book.name">
+        <input type="text" placeholder="Authur" v-model="book.authur">
+        <div class="form-format">
+          <input type="number" placeholder="Book Price" @focus="format($event.target.value)"
+            @keyup="format($event.target.value)" v-model="book.price" v-int>
+          <!-- <select @change="getMoney" v-model="price">
+            <option v-for="(item, index) in arrFormatMoney" :key="index" :value="item">{{item}} VNĐ</option>
+          </select> -->
+          <ul v-if="showMoneyForm">
+            <li @click="getMoney(item)" v-for="(item, index) in arrFormatMoney" :key="index">
+              {{shared.formatMoney(item)}} VNĐ</li>
+          </ul>
+        </div>
+        <input type="text" placeholder="Book Image" v-model="book.image">
+        <textarea type="text" placeholder="Book Description" v-model="book.desc" />
+        <textarea type="text" placeholder="Book Content" v-model="book.content" />
+      </form>
+    
+      <md-dialog-actions>
+        <md-button class="md-primary" @click="closeDialog()">Close</md-button>
+        <md-button class="md-primary" @click="saveBook()">{{ !book.id ? 'Add Book' : 'Edit Book'}}</md-button>
+      </md-dialog-actions>
+    </md-dialog>
+  </div>
+  <div class="cart-preview__actions" v-if="showOption">
+    <div class="cart-preview__actions__search">
+     <AutoComplete @searchPhase="getSearchPhase" :bookList = 'bookList'></AutoComplete>
+    </div>
+    <div class="cart-preview__actions__sort">
+      <select name="" id="" @change="sortBook" v-model="sortBy">
+        <option v-for="option in sortOption" :value="option.value">{{option.name}}</option>
+      </select>
+    </div>
+  </div>
+  <div v-if="bookList.length === 0 && !showSpinner" class="cart-preview__no-item">Search Return No Item</div>
+  <div class="book-grid">
+    <div class="book-grid__item" v-for="(book,index) in bookList" :key="index">
+      <div class="book-grid__item__img"  @click="goToBookDetail(book)">
+        <img :src="book.image" alt="">
+      </div>
+      <div class="book-grid__item__info">
+        <div class="title" @click="goToBookDetail(book)">{{ book.name ? book.name : ''}}</div>
+        <p @click="goToBookDetail(book)">{{book.authur}}</p>
+        <div class="action">
+          <div class="price"  @click="goToBookDetail(book)">{{shared.formatMoney(book.price)}} VNĐ</div>
+          <button class="buy" @click="saveToCartList(book)">
+            <i class="fa fa-cart-plus" aria-hidden="true"></i>Buy Now
+          </button>
+        </div>
+      </div>
+      <div class="close" @click="deleteBook(book)">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </div>
+      <div class="edit" @click="editBook(book)">
+        <i class="fa fa-edit" aria-hidden="true"></i>
+      </div>
+    </div>
+  </div>
+
+  <Paging :currentPagee="currentPage" :pageSizee="pageSize" @itemPerPage="getItemPerPage" @currentPage="getCurrentPage"></Paging>
+</section>

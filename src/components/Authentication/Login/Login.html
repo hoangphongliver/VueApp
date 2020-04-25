@@ -1,0 +1,41 @@
+<section class="login">
+  <!-- <div class="container">
+    <form action="/action_page.php">
+      <div class="row">
+        <h2 style="text-align:center">Login with Social Media or Manually</h2>
+        <div class="vl">
+          <span class="vl-innertext">or</span>
+        </div>
+
+        <div class="col">
+          <div class="fb btn" @click="logInWithFacebook">
+            <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+          </div>
+          <div href="#" class="twitter btn">
+            <i class="fa fa-twitter fa-fw"></i> Login with Twitter
+          </div>
+          <div href="#" class="google btn"><i class="fa fa-google fa-fw">
+            </i> Login with Google+
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="hide-md-lg">
+            <p>Or sign in manually:</p>
+          </div>
+
+          <input type="text" name="username" placeholder="Username" required>
+          <input type="password" name="password" placeholder="Password" required>
+          <input type="submit" value="Login">
+        </div>
+
+      </div>
+    </form>
+  </div>
+  <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
+  <fb:login-button scope="public_profile" onlogin="checkLoginState();">
+  </fb:login-button> -->
+  <facebook-login class="button" :appId="appID" @login="getUserData" @logout="onLogout"
+    @get-initial-status="getUserData" @sdk-loaded="sdkLoaded">
+  </facebook-login>
+</section>
