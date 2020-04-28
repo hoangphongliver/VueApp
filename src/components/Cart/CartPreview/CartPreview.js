@@ -216,8 +216,8 @@ export default {
       };
       return param;
     },
-    getItemPerPage: function (e) {
-      this.pageSize = e;
+    getItemPerPage: function (pageSize) {
+      this.pageSize = Number(pageSize);
       this.getAllBook(this.buildParam());
     },
     getSearchPhase(searchPhase) {

@@ -1,3 +1,5 @@
+@import '../../../assets/mixins.scss';
+
 .cart-preview {
   width: 100%;
   &__title {
@@ -96,12 +98,40 @@
     display: flex;
     flex-wrap: wrap;
     margin-left: 20px;
+    // justify-content: space-between;
     &__item {
-      width: 11%;
+      // width: 11%;
       margin-right: 20px;
       margin-bottom: 40px;
       cursor: pointer;
       position: relative;
+      @include min-xxs{
+        width: 30%;
+      }
+      @include min-xs{
+        width: 28%;
+      }
+      @include min-sm{
+        width: 21%;
+      }
+      @include min-lg{
+        width: 12%;
+      }
+      @include min-md{
+        width: 22%;
+      }
+      @include min-xl{
+        width: 18%;
+      }
+      @include min-xxl{
+        width: 15%;
+      }
+      @include min-xxl{
+        width: 12%;
+      }
+      @include min-xxxl{
+        width: 11%;
+      }
       &:hover {
         color: #3fb984;
         .action {
@@ -118,6 +148,7 @@
         }
       }
       &__info {
+        width: 150px;
         .title {
           margin-top: 10px;
           font-weight: bold;

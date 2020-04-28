@@ -1,0 +1,403 @@
+
+@function breakpoints($breakpoint) {
+  @return map-get($grid-breakpoints, $breakpoint);
+}
+
+$grid-breakpoints: (
+  xxs: 360px,
+  xs: 481px,
+  sm: 768px,
+  smplus: 769px,
+  md: 992px,
+  lg: 1024px,
+  xl: 1200px,
+  xxl: 1450px,
+  xxxl: 1650px,
+  xxxxl: 1900px,
+);
+
+@mixin vscroll-in-max($height) {
+  max-height: $height;
+  overflow: auto;
+
+  @include mobile {
+    max-height: none;
+  }
+}
+
+@mixin border-radius($params) {
+  border-radius: $params;
+  -webkit-border-radius: $params;
+  -moz-border-radius: $params;
+  -ms-border-radius: $params;
+}
+
+@mixin truncate-at-line($lineNumber, $lineHeight) {
+  position: relative;
+  line-height: $lineHeight;
+  overflow: hidden;
+  max-height: $lineHeight * $lineNumber;
+  text-align: justify;
+  margin-right: -1em;
+  padding-right: 2em;
+
+  &:before {
+    position: absolute;
+    content: "...";
+    right: 1em;
+    bottom: 0;
+  }
+
+  &:after {
+    position: absolute;
+    content: "";
+    right: 1em;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    background: #fff;
+  }
+}
+
+@mixin truncate($maxWidth: null) {
+  @if ($maxWidth) {
+    max-width: $maxWidth;
+  }
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow: inset $top $left $blur $color;
+    -moz-box-shadow: inset $top $left $blur $color;
+    box-shadow: inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}
+
+@mixin off-box-shadow() {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+@mixin button-dialog-theme($primary) {
+  font-size: 14px;
+  font-weight: bold;
+  color: map-get($mat-connect-navy-theme, 300);
+  outline: none;
+  background: none;
+  border: none;
+  padding: 0 20px;
+  line-height: 36px;
+  @include off-box-shadow();
+
+  @if $primary== "primary" {
+    color: #fff;
+    background: map-get($mat-connect-navy-theme, A900);
+    @include border-radius(2px);
+  }
+}
+
+@keyframes move {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 28px 0;
+  }
+}
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin transition-delay($delay...) {
+  -moz-transition-delay: $delay;
+  -o-transition-delay: $delay;
+  -webkit-transition-delay: $delay;
+  transition-delay: $delay;
+}
+
+// Breakpoint
+@mixin min-xxxxl {
+  @media screen and (min-width: #{breakpoints(xxxxl)}) {
+    @content;
+  }
+}
+
+@mixin min-xxxl {
+  @media screen and (min-width: #{breakpoints(xxxl)}) {
+    @content;
+  }
+}
+
+@mixin min-xxl {
+  @media screen and (min-width: #{breakpoints(xxl)}) {
+    @content;
+  }
+}
+
+@mixin min-xl {
+  @media screen and (min-width: #{breakpoints(xl)}) {
+    @content;
+  }
+}
+
+@mixin min-lg {
+  @media screen and (min-width: #{breakpoints(lg)}) {
+    @content;
+  }
+}
+
+@mixin min-md {
+  @media (min-width: #{breakpoints(md)}) {
+    @content;
+  }
+}
+
+@mixin min-sm {
+  @media (min-width: #{breakpoints(sm)}) {
+    @content;
+  }
+}
+
+@mixin min-smplus {
+  @media (min-width: #{breakpoints(sm)} + 1px) {
+    @content;
+  }
+}
+
+@mixin min-xs {
+  @media screen and (min-width: #{breakpoints(xs)}) {
+    @content;
+  }
+}
+
+@mixin min-xxs {
+  @media screen and (max-width: #{breakpoints(xxs)}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: #{breakpoints(xl) + 1px}) {
+    @content;
+  }
+}
+
+@mixin device {
+  @media screen and (max-width: #{breakpoints(lg)}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{breakpoints(sm)}) and (max-width: #{breakpoints(lg)}) {
+    @content;
+  }
+}
+
+@mixin lg-tablet {
+  @media (min-width: #{breakpoints(lg)}) and (max-width: #{breakpoints(xl)}) {
+    @content;
+  }
+}
+
+@mixin sm-desktop {
+  @media (min-width: #{breakpoints(lg)}) and (max-width: #{breakpoints(xxl)}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: #{breakpoints(sm) - 1px}) {
+    @content;
+  }
+}
+
+@mixin not-mobile {
+  @media screen and (min-width: #{breakpoints(sm)}) {
+    @content;
+  }
+}
+
+@mixin print {
+  @media print {
+    @content;
+  }
+}
+
+@mixin landscape {
+  @media screen and (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin portrait {
+  @media screen and (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin ie {
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    @content;
+  }
+}
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin scale($value) {
+  -webkit-transform: scale($value);
+  -moz-transform: scale($value);
+  -ms-transform: scale($value);
+  -o-transform: scale($value);
+  transform: scale($value);
+}
+
+@mixin scale2D($value, $value2) {
+  -webkit-transform: scale($value, $value2);
+  -moz-transform: scale($value, $value2);
+  -ms-transform: scale($value, $value2);
+  -o-transform: scale($value, $value2);
+  transform: scale($value, $value2);
+}
+
+@mixin translateX($left) {
+  -webkit-transform: translateX($left);
+  -moz-transform: translateX($left);
+  -ms-transform: translateX($left);
+  -o-transform: translateX($left);
+  transform: translateX($left);
+}
+
+@mixin translateY($top) {
+  -webkit-transform: translateY($top);
+  -moz-transform: translateY($top);
+  -ms-transform: translateY($top);
+  -o-transform: translateY($top);
+  transform: translateY($top);
+}
+
+@mixin translateZ($right) {
+  -webkit-transform: translateZ($right);
+  -moz-transform: translateZ($right);
+  -ms-transform: translateZ($right);
+  -o-transform: translateZ($right);
+  transform: translateZ($right);
+}
+
+@mixin translate2D($x, $y) {
+  -webkit-transform: translate($x, $y);
+  -moz-transform: translate($x, $y);
+  -ms-transform: translate($x, $y);
+  -o-transform: translate($x, $y);
+  transform: translate($x, $y);
+}
+
+@mixin translate3D($x, $y, $z) {
+  -webkit-transform: translate3d($x, $y, $z);
+  -moz-transform: translate3d($x, $y, $z);
+  -ms-transform: translate3d($x, $y, $z);
+  -o-transform: translate3d($x, $y, $z);
+  transform: translate3d($x, $y, $z);
+}
+
+@mixin rotate($deg) {
+  -webkit-transform: rotate($deg);
+  -moz-transform: rotate($deg);
+  -ms-transform: rotate($deg);
+  -o-transform: rotate($deg);
+  transform: rotate($deg);
+}
+
+@mixin transform($x, $y, $z) {
+  -webkit-transition: $x $y $z;
+  -o-transition: $x $y $z;
+  transition: $x $y $z;
+}
+
+@mixin typography($ff, $fw, $fz, $lh) {
+  font-family: $ff;
+  font-weight: $fw;
+  font-size: $fz;
+  line-height: $lh;
+}
+
+@mixin placeholder() {
+  &.placeholder {
+    @content;
+  }
+
+  &::placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder {
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @content;
+  }
+
+  &::-webkit-input-placeholder {
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+
+  &::-ms-input-placeholder {
+    @content;
+  }
+}
+
+@mixin scrollbar {
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #c8dff5;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #1b77d2;
+  }
+
+  &::-webkit-scrollbar,
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-thumb {
+    visibility: hidden;
+  }
+
+  &:hover {
+    &::-webkit-scrollbar,
+    &::-webkit-scrollbar-track,
+    &::-webkit-scrollbar-thumb {
+      visibility: visible;
+    }
+  }
+}

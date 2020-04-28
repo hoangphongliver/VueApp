@@ -1,10 +1,12 @@
 
 import { mapState } from 'vuex';
 import BookItem from '../BookItem/index.vue'
+import Autocomplete from 'vuejs-auto-complete'
 export default {
   name: 'auto-complete',
   components: {
-    BookItem
+    BookItem,
+    Autocomplete
   },
   props: {},
   data() {
@@ -36,57 +38,79 @@ export default {
     autoComptete(e) {
       this.displaySearchResult = true;
     },
+
+    addDistributionGroup(group) {
+      console.log(group);
+
+      this.$refs.autocomplete.clear()
+    },
+
+    formattedDisplay(result) {
+      return result.name
+    },
+
     getBook: function (value, index) {
       this.searchPhase = value
       this.currentItem = index
       this.displaySearchResult = false
       this.$emit('searchPhase', this.searchPhase);
     },
+
     focusInput: function () {
       this.displaySearchResult = true
     },
+
     enter: function (e) {
       const keySearch = this.filterUser[this.currentItem]
-      this.searchPhase = keySearch ? keySearch.name :  e.target.value;
+      this.searchPhase = keySearch ? keySearch.name : e.target.value;
       this.$emit('searchPhase', this.searchPhase);
       this.displaySearchResult = false;
       this.$nextTick(() => {
         this.$refs["inputSearch"].blur()
       })
     },
+
     down: function (e) {
       this.currentItem += 1;
       if (this.currentItem > this.filterUser.length - 1) {
         this.currentItem = 0
+        this.$refs.scrollContainer.scrollTop = 0
       };
       const keySearch = this.filterUser[this.currentItem];
       this.placeholder = keySearch ? keySearch.name : e.target.value;
       this.fixScrolling();
     },
+
     up: function (e) {
       this.currentItem -= 1;
       if (this.currentItem < 0) {
         this.currentItem = this.filterUser.length - 1
+        this.$refs.scrollContainer.scrollTop = this.bookHeight * this.currentItem;
       }
       const keySearch = this.filterUser[this.currentItem]
       this.placeholder = keySearch ? keySearch.name : e.target.value;
+      this.$refs.scrollContainer.scrollTop = this.bookHeight * this.currentItem;
       this.fixScrolling()
     },
+
     fixScrolling() {
-      const he = this.bookHeight * 7;
-      this.$refs.scrollContainer.scrollTop = this.bookHeight * this.currentItem;
+      const cartHeight = this.$refs.scrollContainer.clientHeight;
+      if (this.bookHeight * (this.currentItem + 1) >= cartHeight) {
+        this.$refs.scrollContainer.scrollTop = this.bookHeight * (this.currentItem);
+      }
     },
+
     getBookHeight(value) {
       this.bookHeight = value
     },
-    handleClickOutside(evt) {
-      console.log(evt);
 
+    handleClickOutside(evt) {
       if (!this.$el.contains(evt.target)) {
         this.displaySearchResult = false;
         this.currentItem = -1;
       }
     }
+
   },
   directives() {
 

@@ -8282,6 +8282,11 @@ vue@^2.6.11:
   resolved "https://registry.npm.taobao.org/vue/download/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"
   integrity sha1-dllNh31LEiNEBuhONSdcbVFBJcU=
 
+vuejs-auto-complete@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/vuejs-auto-complete/-/vuejs-auto-complete-0.9.0.tgz#a345836f17f727284d23b4fc3c63365092d39281"
+  integrity sha512-7UV3s9bXdnsbGARhHcOuDAszGUsz7JpsFKBfHQuQvo4rfH0yQIru2Rb/x2bWU+m+VW4fS9DKDSYi6tY511QSIA==
+
 vuex@^3.1.3:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/vuex/-/vuex-3.1.3.tgz#f2ad73e3fb73691698b38c93f66e58e267947180"

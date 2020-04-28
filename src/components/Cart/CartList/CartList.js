@@ -39,6 +39,7 @@ export default {
       const module = `cartpreview`;
       localStorage.setItem("module", module);
     },
+
     deleteBookOnCart: function (bookID) {
       const cartList = this.cartList.filter(x => x.id !== bookID);
       this.arrayCheckbox = this.arrayCheckbox.filter(x => x.id !== bookID)
@@ -46,6 +47,7 @@ export default {
       localStorage.setItem("cartList", JSON.stringify(cartList));
       this.getTotalPrice(cartList);
     },
+
     minusQuantity: function (book) {
       let quantity = book.quantity;
       quantity--;
@@ -61,6 +63,7 @@ export default {
       this.saveLocalStorage(this.cartList)
       this.getTotalPrice(this.cartList)
     },
+
     plusQuantity: function (book) {
       let quantity = book.quantity;
       quantity++;
@@ -73,11 +76,13 @@ export default {
       this.saveLocalStorage(this.cartList)
       this.getTotalPrice(this.cartList)
     },
+
     resetCart() {
       this.$store.dispatch("saveCartList", []);
       this.saveLocalStorage([])
       this.totalPrice = 0
     },
+
     getQuantity(bookID, e) {
       this.cartList.forEach((cartBook) => {
         if (cartBook.id === bookID) {
@@ -87,6 +92,7 @@ export default {
       this.saveLocalStorage(this.cartList)
       this.getTotalPrice(this.cartList)
     },
+
     deleleSelectedBook: function () {
       let newCart = this.cartList;
 
@@ -101,6 +107,7 @@ export default {
       this.getTotalPrice(newCart)
       this.arrayCheckbox = [];
     },
+
     getTotalPrice: function (cartList) {
       if (cartList.length > 0) {
         this.totalPrice = cartList.map(x => x.quantity * x.price).reduce((a, b) => a + b);
@@ -108,6 +115,7 @@ export default {
         this.totalPrice = 0
       }
     },
+    
     saveLocalStorage: function (cartList) {
       localStorage.setItem("cartList", JSON.stringify(cartList));
     }

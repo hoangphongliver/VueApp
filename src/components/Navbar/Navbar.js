@@ -15,9 +15,6 @@ export default {
     }
   },
   computed: {
-    totalTvCount() {
-      return this.$store.state.totalTvCount
-    }
   },
   mounted() {
     const module = localStorage.getItem('module');
