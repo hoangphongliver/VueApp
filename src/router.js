@@ -81,13 +81,13 @@ export const routes = [
                 name: '',
                 component: ParentComponent,
                 meta: { title: 'Auto Complete' }
-            },
-            {
-                path: '*',
-                name: '',
-                component: NotFound,
-                meta: { title: 'Not Found' }
             }
         ]
     },
+    {
+        path: '*',
+        name: '',
+        component: NotFound,
+        meta: { title: 'Not Found' }
+    }
 ]

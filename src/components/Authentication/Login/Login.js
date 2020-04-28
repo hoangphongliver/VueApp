@@ -43,7 +43,10 @@ export default {
       if (data && data.response) {
         const token = data.response.authResponse;
         localStorage.setItem('ACCESS-TOKEN', JSON.stringify(token));
-        location.reload(true);
+        const tokenLocal = JSON.parse(localStorage.getItem("ACCESS-TOKEN"));
+        if (tokenLocal) {
+          this.$router.push(`/cartpreview`);
+        }
       }
 
     },

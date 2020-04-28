@@ -72,9 +72,9 @@ export default {
   mounted() {
     const path = localStorage.getItem("module");
     const token = JSON.parse(localStorage.getItem("ACCESS-TOKEN"));
-    if (path && token) {
-      this.$router.push(`/${path}`);
-    }
+    // if (path && token) {
+    //   this.$router.push(`/${path}`);
+    // }
     if (!token) {
       this.$router.push(`login`);
     }

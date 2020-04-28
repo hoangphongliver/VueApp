@@ -37,7 +37,8 @@ export default {
       arrFormatMoney: [],
       showMoneyForm: false,
       pageSize: 16,
-      totalItem: 0
+      totalItem: 0,
+      isFocus: false
     }
   },
   computed: {
@@ -228,6 +229,11 @@ export default {
         this.searchPhase = ''
       }
       this.getAllBook(this.buildParam());
+    },
+    getIsFocus(value){
+      this.isFocus = value;
+      console.log(value);
+      
     }
   }
 }

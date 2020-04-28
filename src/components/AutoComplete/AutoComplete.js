@@ -57,7 +57,8 @@ export default {
     },
 
     focusInput: function () {
-      this.displaySearchResult = true
+      this.displaySearchResult = true;
+      this.$emit('focusInput', true)
     },
 
     enter: function (e) {

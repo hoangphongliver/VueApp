@@ -41,7 +41,7 @@
   </div>
   <div class="cart-preview__actions" v-if="showOption">
     <div class="cart-preview__actions__search">
-     <AutoComplete @searchPhase="getSearchPhase" :bookList = 'bookList'></AutoComplete>
+     <AutoComplete @focusInput="getIsFocus"  @searchPhase="getSearchPhase" :bookList = 'bookList'></AutoComplete>
     </div>
     <div class="cart-preview__actions__sort">
       <select name="" id="" @change="sortBook" v-model="sortBy">
@@ -49,7 +49,7 @@
       </select>
     </div>
   </div>
-  <div v-if="bookList.length === 0 && !showSpinner" class="cart-preview__no-item">Search Return No Item</div>
+  <div v-if="bookList.length === 0 && isFocus" class="cart-preview__no-item">Search Return No Item</div>
   <div class="book-grid">
     <div class="book-grid__item" v-for="(book,index) in bookList" :key="index">
       <div class="book-grid__item__img"  @click="goToBookDetail(book)">

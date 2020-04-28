@@ -7,7 +7,16 @@
     justify-content: space-between;
     color: seagreen;
     margin-left: 15px;
-    font-size: 22px;
+    // font-size: 22px;
+    @include min-xxs{
+      font-size: 15px;
+    }
+    @include min-xs{
+      font-size: 15px;
+    }
+    @include min-sm{
+      font-size: 22px;
+    }
     align-items: center;
     .add-book {
       padding: 8px 13px 13px 11px;
