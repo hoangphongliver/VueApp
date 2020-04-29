@@ -47,11 +47,13 @@ export default {
           ...newMember
         });
       } else {
-        this.users.forEach((item, id) => {
-          if (item.id === newMember.id) {
-            this.users[id] = newMember
+        const editUser = this.users.map(user => {
+          if (user.id === newMember.id) {
+            user = newMember
           }
-        })
+          return user
+        });
+        this.users = editUser;
       }
     },
     onConfirm() {
