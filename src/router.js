@@ -23,10 +23,10 @@ function guardMyroute(to, from, next) {
 
 export const routes = [
     {
-        path: '/',
-        name: '',
+        path: '',
+        name: 'a',
         component: Login,
-        meta: { title: 'Home' }
+        meta: { title: 'Login' }
     },
     {
         path: '/login',
@@ -37,31 +37,31 @@ export const routes = [
     {
         path: '/home',
         name: '',
-        component: Home,
+        component: () => import('./views/Home'),
         beforeEnter: guardMyroute,
         children: [
             {
                 path: '/listmember',
                 name: '',
-                component: () => import('./components/ListMembers/index.vue'),
+                component: () => import('./components/ListMembers'),
                 meta: { title: 'List Member' }
             },
             {
                 path: '/cartpreview',
                 name: '',
-                component: () => import('./components/Cart/CartPreview'),
+                component: () => import('./views/ProductList'),
                 meta: { title: 'List Book' }
             },
             {
                 path: '/cartpreview/detail/:id',
                 name: '',
-                component: BookDetail,
+                component: ()=> import('./views/BookDetail'),
                 meta: { title: 'Book Detail' }
             },
             {
                 path: '/cartlist',
                 name: '',
-                component: CartList,
+                component: () => import('./views/CartList'),
                 meta: { title: 'Cart List' }
             },
             {

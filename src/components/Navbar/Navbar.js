@@ -1,4 +1,4 @@
-
+import { mapState } from "vuex";
 export default {
   name: 'navbar',
   components: {},
@@ -9,21 +9,22 @@ export default {
   },
   data() {
     return {
-      hideMenu: true,
       active: false,
       currentModule: 'listmember'
     }
   },
   computed: {
+    ...mapState([
+      "hideNavbar",
+    ]),
   },
   mounted() {
     const module = localStorage.getItem('module');
-    this.currentModule = module
+    this.currentModule = module;
   },
   methods: {
     closeMenu: function () {
-      this.hideMenu = !this.hideMenu;
-      this.$emit('childToParent', this.hideMenu);
+      this.$store.dispatch("hideNavbar", true)
     },
     saveCurrentModule: function (current) {
       this.currentModule = current;
@@ -37,11 +38,6 @@ export default {
       this.$store.dispatch('triggerLogout', true);
       location.reload(true);
       this.$router.push(`/login`)
-    }
-  },
-  watch: {
-    menu: function (menu) {
-      this.hideMenu = menu;
     }
   }
 }

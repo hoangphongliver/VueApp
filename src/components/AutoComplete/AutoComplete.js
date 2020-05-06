@@ -96,9 +96,10 @@ export default {
 
     fixScrolling() {
       const cartHeight = this.$refs.scrollContainer.clientHeight;
-      if (this.bookHeight * (this.currentItem + 1) >= cartHeight) {
-        this.$refs.scrollContainer.scrollTop = this.bookHeight * (this.currentItem);
-      }
+      // if (this.bookHeight * (this.currentItem + 1) >= cartHeight) {
+      //   this.$refs.scrollContainer.scrollTop = this.bookHeight * (this.currentItem);
+      // }
+      this.$refs.scrollContainer.scrollTop = this.bookHeight * (this.currentItem);
     },
 
     getBookHeight(value) {

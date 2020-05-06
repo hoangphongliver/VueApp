@@ -47,13 +47,13 @@ export default {
           ...newMember
         });
       } else {
-        const editUser = this.users.map(user => {
+        this.users = this.users.map(user => {
           if (user.id === newMember.id) {
             user = newMember
           }
           return user
         });
-        this.users = editUser;
+        // this.users = editUser;
       }
     },
     onConfirm() {
