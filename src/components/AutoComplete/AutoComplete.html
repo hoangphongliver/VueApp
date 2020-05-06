@@ -1,12 +1,26 @@
 <section class="auto-complete">
-  <input ref="inputSearch" type="text" :placeholder="placeholder" @keyup="autoComptete($event)" v-model="searchPhase"
-    @focus="focusInput()" @keydown.enter='enter($event)' @keydown.down='down($event)' @keydown.up='up($event)' />
+  <input
+    ref="inputSearch"
+    type="text"
+    :placeholder="placeholder"
+    @keyup="autoComptete($event)"
+    v-model="searchPhase"
+    @focus="focusInput()"
+    @keydown.enter="enter($event)"
+    @keydown.down="down($event)"
+    @keydown.up="up($event)"
+  />
   <div class="view-cart" v-if="displaySearchResult">
     <div class="cart-view" ref="scrollContainer">
-      <BookItem @bookHeight="getBookHeight" ref="options" v-for="(book,index) in filterUser"
-        :class="currentItem === index ? 'active' : ''" @click.native="getBook(book.name , index)">
+      <BookItem
+        @bookHeight="getBookHeight"
+        ref="options"
+        v-for="(book,index) in filterUser"
+        :class="currentItem === index ? 'active' : ''"
+        @click.native="getBook(book.name , index)"
+      >
         <slot slot="img">
-          <img :src="book.image" alt="">
+          <img :src="book.image" alt="" />
         </slot>
         <slot slot="bookName">{{book.name}}</slot>
       </BookItem>

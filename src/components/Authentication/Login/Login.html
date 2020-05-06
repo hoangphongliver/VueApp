@@ -35,7 +35,13 @@
   <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
   <fb:login-button scope="public_profile" onlogin="checkLoginState();">
   </fb:login-button> -->
-  <facebook-login class="button" :appId="appID" @login="getUserData" @logout="onLogout"
-    @get-initial-status="getUserData" @sdk-loaded="sdkLoaded">
+  <facebook-login
+    class="button"
+    :appId="appID"
+    @login="getUserData"
+    @logout="onLogout"
+    @get-initial-status="getUserData"
+    @sdk-loaded="sdkLoaded"
+  >
   </facebook-login>
 </section>

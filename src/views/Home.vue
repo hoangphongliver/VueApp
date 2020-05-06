@@ -23,7 +23,6 @@ export default {
   },
   data() {
     return {
-      hideMenu: true,
     };
   },
   computed: {
@@ -32,15 +31,8 @@ export default {
     ]),
   },
   methods: {
-    openMennu: function() {
-      this.hideMenu = !this.hideMenu;
-    },
-    getMenu: function(menu) {
-      this.hideMenu = menu;
-    }
   },
   mounted() {
-    
   }
 };
 </script>

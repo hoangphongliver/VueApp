@@ -18,7 +18,9 @@
     <md-field>
       <label>Gender:</label>
       <md-select v-model="userModel.gender">
-        <md-option v-for="(gen,i) in gender" :key="i" v-bind:value="gen">{{gen}}</md-option>
+        <md-option v-for="(gen,i) in gender" :key="i" v-bind:value="gen"
+          >{{gen}}</md-option
+        >
       </md-select>
     </md-field>
 

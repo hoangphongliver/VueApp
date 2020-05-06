@@ -3,23 +3,31 @@
   <div class="navbar__menu">
     <div class="fix">
       <div class="icon" @click="closeMenu()">
-        <md-icon v-if="!hideMenu" class="fa fa-times"></md-icon>
+        <md-icon class="fa fa-times"></md-icon>
       </div>
       <ul>
-        <li :class="[currentModule==='listmember' ? 'active' : '']"
-          @click="closeMenu(), saveCurrentModule('listmember')">
+        <li
+          :class="[currentModule==='listmember' ? 'active' : '']"
+          @click="closeMenu(), saveCurrentModule('listmember')"
+        >
           Members
         </li>
-        <li :class="[currentModule==='notfound' ? 'active' : '']"
-          @click="closeMenu() , saveCurrentModule('notfound')">
+        <li
+          :class="[currentModule==='notfound' ? 'active' : '']"
+          @click="closeMenu() , saveCurrentModule('notfound')"
+        >
           Not Found
         </li>
-        <li :class="[currentModule==='cartpreview' ? 'active' : '']"
-          @click="closeMenu() , saveCurrentModule('cartpreview')">
+        <li
+          :class="[currentModule==='cartpreview' ? 'active' : '']"
+          @click="closeMenu() , saveCurrentModule('cartpreview')"
+        >
           Cart Preview
         </li>
-        <li :class="[currentModule==='autocomplete' ? 'active' : '']"
-          @click="closeMenu() , saveCurrentModule('autocomplete')">
+        <li
+          :class="[currentModule==='autocomplete' ? 'active' : '']"
+          @click="closeMenu() , saveCurrentModule('autocomplete')"
+        >
           Auto Complete
         </li>
       </ul>
@@ -28,5 +36,4 @@
       </div>
     </div>
   </div>
-  
 </section>

@@ -6,16 +6,25 @@
     <h2>Cart List</h2>
   </div>
   <div class="cart-list__item">
-    <div class="cart-list__item__product" :class=" [cartList.length === 0 ? 'no-product' : '' ]">
+    <div
+      class="cart-list__item__product"
+      :class=" [cartList.length === 0 ? 'no-product' : '' ]"
+    >
       <div class="pd">
-        <div class="no-item" v-if="cartList.length == 0">No Items On Cart. Please select Item on List Product !</div>
+        <div class="no-item" v-if="cartList.length == 0">
+          No Items On Cart. Please select Item on List Product !
+        </div>
         <div class="item" v-for="(cart,index) in cartList" :key="index">
           <div class="product-info">
             <div class="checkbox">
-              <md-checkbox v-model="arrayCheckbox" :value="cart" @change="changeCheckbox($event)"></md-checkbox>
+              <md-checkbox
+                v-model="arrayCheckbox"
+                :value="cart"
+                @change="changeCheckbox($event)"
+              ></md-checkbox>
             </div>
             <div class="product-info__img">
-              <img :src="cart.image" alt="">
+              <img :src="cart.image" alt="" />
             </div>
             <div class="product-info__title">
               <span> {{cart.name}}</span>
@@ -23,7 +32,11 @@
                 <div class="action" @click="minusQuantity(cart)">
                   <md-icon class="fa fa-minus"></md-icon>
                 </div>
-                <input type="text" :value="cart.quantity" @keyup="getQuantity(cart.id,$event)">
+                <input
+                  type="text"
+                  :value="cart.quantity"
+                  @keyup="getQuantity(cart.id,$event)"
+                />
                 <div class="action" @click="plusQuantity(cart)">
                   <md-icon class="fa fa-plus"></md-icon>
                 </div>
@@ -32,15 +45,24 @@
           </div>
           <div class="product-count">
             <div class="count">
-              <span>{{ cart.quantity }} x {{ shared.formatMoney(cart.price) }} :</span>
-              <span style="color: firebrick;">{{shared.formatMoney( cart.quantity * cart.price) }} VNĐ</span>
+              <span
+                >{{ cart.quantity }} x {{ shared.formatMoney(cart.price) }}
+                :</span
+              >
+              <span style="color: firebrick;"
+                >{{shared.formatMoney( cart.quantity * cart.price) }} VNĐ</span
+              >
             </div>
             <div @click="deleteBookOnCart(cart.id)">
               <md-icon class="fa fa-trash"></md-icon>
             </div>
           </div>
         </div>
-        <div class="deleteItem" v-if="arrayCheckbox.length > 0" @click="deleleSelectedBook()">
+        <div
+          class="deleteItem"
+          v-if="arrayCheckbox.length > 0"
+          @click="deleleSelectedBook()"
+        >
           <md-icon class="fa fa-trash"></md-icon>
         </div>
       </div>
@@ -53,8 +75,10 @@
           <div class="item">{{cartList.length}}</div>
         </div>
         <div class="product">
-          <div class="name">Total Price: </div>
-          <div class="item" style="color: firebrick;">{{shared.formatMoney(totalPrice)}} VNĐ</div>
+          <div class="name">Total Price:</div>
+          <div class="item" style="color: firebrick;">
+            {{shared.formatMoney(totalPrice)}} VNĐ
+          </div>
         </div>
         <div class="product">
           <button @click="resetCart()">Reset Cart</button>
@@ -67,10 +91,10 @@
           <div class="item">{{arrayCheckbox.length}}</div>
         </div>
         <div class="product">
-          <div class="name">Total Price: </div>
+          <div class="name">Total Price:</div>
           <div class="item" style="color: firebrick;">
-            {{totalPriceSelected}}
-            VNĐ</div>
+            {{totalPriceSelected}} VNĐ
+          </div>
         </div>
         <div class="product product-payment">
           <button @click="payment()">Payment</button>

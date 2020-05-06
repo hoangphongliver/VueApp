@@ -1,17 +1,37 @@
 <section class="list-members" v-bind:class="[showForm ? 'set-width' : '']">
-  <md-dialog-confirm :md-active.sync="active" :md-title="title" md-confirm-text="Agree"
-    md-cancel-text="No" @md-cancel="onCancel" @md-confirm="onConfirm" />
-  <AddMember :member="getUserToEdit" v-on:childToParent="getMemberFromAdd"></AddMember>
+  <md-dialog-confirm
+    :md-active.sync="active"
+    :md-title="title"
+    md-confirm-text="Agree"
+    md-cancel-text="No"
+    @md-cancel="onCancel"
+    @md-confirm="onConfirm"
+  />
+  <AddMember
+    :member="getUserToEdit"
+    v-on:childToParent="getMemberFromAdd"
+  ></AddMember>
   <div class="list-members__table">
-    <md-button class="md-raised md-primary" v-on:click="showForm = !showForm">{{showForm ? 'Hide' : 'Show'}} Form
+    <md-button class="md-raised md-primary" v-on:click="showForm = !showForm"
+      >{{showForm ? 'Hide' : 'Show'}} Form
     </md-button>
     <md-table v-model="users" :md-sort.sync="currentSort" md-card>
       <md-table-row slot="md-table-row" slot-scope="{ item }">
-        <md-table-cell md-label="Name" md-sort-by="name">{{ item.name }}</md-table-cell>
-        <md-table-cell md-label="Email" md-sort-by="email">{{ item.email }}</md-table-cell>
-        <md-table-cell md-label="Age" md-sort-by="email">{{ item.age }}</md-table-cell>
-        <md-table-cell md-label="Gender" md-sort-by="gender">{{ item.gender }}</md-table-cell>
-        <md-table-cell md-label="Description" md-sort-by="title">{{ item.desc }}</md-table-cell>
+        <md-table-cell md-label="Name" md-sort-by="name"
+          >{{ item.name }}</md-table-cell
+        >
+        <md-table-cell md-label="Email" md-sort-by="email"
+          >{{ item.email }}</md-table-cell
+        >
+        <md-table-cell md-label="Age" md-sort-by="email"
+          >{{ item.age }}</md-table-cell
+        >
+        <md-table-cell md-label="Gender" md-sort-by="gender"
+          >{{ item.gender }}</md-table-cell
+        >
+        <md-table-cell md-label="Description" md-sort-by="title"
+          >{{ item.desc }}</md-table-cell
+        >
         <md-table-cell md-label="Actions" md-sort-by="title">
           <button v-on:click="editMember(item)">
             <md-icon class="fa fa-edit"></md-icon>

@@ -2,29 +2,41 @@
   <div class="cart-view">
     <div class="view-cart__view-book" v-for="cart in cartList">
       <div class="view-cart__view-book__image">
-        <img :src="cart.image" alt="">
+        <img :src="cart.image" alt="" />
       </div>
       <div class="view-cart__view-book__info">
         <span>{{cart.name}}</span>
-        <span>{{cart.quantity}} x {{shared.formatMoney(cart.price)}} =
-          {{ shared.formatMoney(cart.quantity * cart.price)}} VNĐ</span>
+        <span
+          >{{cart.quantity}} x {{shared.formatMoney(cart.price)}} = {{
+          shared.formatMoney(cart.quantity * cart.price)}} VNĐ</span
+        >
       </div>
       <div class="view-cart__view-book__del" @click="deleteBookOnCart(cart.id)">
         <md-icon class="fa fa-trash"></md-icon>
       </div>
     </div>
     <div class="view-cart__price">
-      <div v-if="cartList.length > 0" class="view-cart__price__total">Total Price: <span
-          style="color: firebrick;">{{ shared.formatMoney(totalPrice(cartList))}} VNĐ</span>
+      <div v-if="cartList.length > 0" class="view-cart__price__total">
+        Total Price:
+        <span style="color: firebrick;"
+          >{{ shared.formatMoney(totalPrice(cartList))}} VNĐ</span
+        >
       </div>
-      <div v-if="cartList.length == 0" class="view-cart__price__total" style="color: firebrick;">No Item On Cart
+      <div
+        v-if="cartList.length == 0"
+        class="view-cart__price__total"
+        style="color: firebrick;"
+      >
+        No Item On Cart
       </div>
       <div class="view-cart__price__view" @click="goToListCart()">
-        <button :disabled="path === '/cartlist' || cartList.length === 0">View Cart</button>
+        <button :disabled="path === '/cartlist' || cartList.length === 0">
+          View Cart
+        </button>
       </div>
     </div>
   </div>
-  <div class="view-cart__close"  @click="closeCart">
+  <div class="view-cart__close" @click="closeCart">
     <md-icon class="fa fa-times"></md-icon>
   </div>
 </section>

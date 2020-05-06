@@ -25,11 +25,9 @@
 import { mapState } from "vuex";
 export default {
   name: "App",
-  components: {
-  },
+  components: {},
   data() {
     return {
-      hideMenu: true,
       position: "center",
       duration: 2500,
     };

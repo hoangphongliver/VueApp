@@ -1,36 +1,58 @@
 <section class="paging">
   <div class="paging__paging">
     <ul>
-      <button :disabled="currentPage === 1 || currentPage === listTotalPage[this.currentListPage - 1][0]"
-        @click="prevPage()">
+      <button
+        :disabled="currentPage === 1 || currentPage === listTotalPage[this.currentListPage - 1][0]"
+        @click="prevPage()"
+      >
         <li><i class="fa fa-backward" aria-hidden="true"></i></li>
       </button>
-      <button class="list-page" v-if="currentListPage > 1" :disabled="currentListPage === 1" @click="prevListPage()">
+      <button
+        class="list-page"
+        v-if="currentListPage > 1"
+        :disabled="currentListPage === 1"
+        @click="prevListPage()"
+      >
         <li>---</li>
       </button>
       <div class="page" v-for="(item, index) in listTotalPage" :key="index">
         <div v-if=" index >= (currentListPage - 1) && index < currentListPage">
-          <button v-for="(page, index2) in item" :disabled="currentPage === page" @click="changePage(page)"
-            :key="index2">
+          <button
+            v-for="(page, index2) in item"
+            :disabled="currentPage === page"
+            @click="changePage(page)"
+            :key="index2"
+          >
             <li :class="[currentPage === page ? 'active' : '']">{{page}}</li>
           </button>
         </div>
       </div>
-      <button class="list-page" v-if="listTotalPage.length > 1 && currentListPage !== listTotalPage.length"
-        :disabled="currentListPage === listTotalPage.length" @click="nextListPage()">
+      <button
+        class="list-page"
+        v-if="listTotalPage.length > 1 && currentListPage !== listTotalPage.length"
+        :disabled="currentListPage === listTotalPage.length"
+        @click="nextListPage()"
+      >
         <li>---</li>
       </button>
       <button
         :disabled="currentPage === totalPage || currentPage === listTotalPage[this.currentListPage - 1][totalListPage-1]"
-        @click="nextPage()">
+        @click="nextPage()"
+      >
         <li><i class="fa fa-forward" aria-hidden="true"></i></li>
       </button>
     </ul>
   </div>
   <div class="paging__item-page">
     <select name="" id="" @change="getItemPerPage($event)">
-      <option v-for="(item, index) in listOption" :disabled="item > totalItem + 8" :selected="item === pageSize"
-        :key="index" :value="item">{{item}}</option>
+      <option
+        v-for="(item, index) in listOption"
+        :disabled="item > totalItem + 8"
+        :selected="item === pageSize"
+        :key="index"
+        :value="item"
+        >{{item}}</option
+      >
     </select>
   </div>
 </section>
